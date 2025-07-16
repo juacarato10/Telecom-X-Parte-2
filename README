@@ -1,0 +1,58 @@
+# Análisis y Predicción de Churn de Clientes en TelecomX
+
+## Descripción del Proyecto
+
+Este proyecto tiene como objetivo analizar los factores que influyen en la cancelación (churn) de clientes en una empresa de telecomunicaciones ficticia llamada TelecomX y desarrollar modelos predictivos para identificar a los clientes en riesgo de evasión.
+
+El análisis se basa en un conjunto de datos que contiene información demográfica, servicios contratados, información de cuenta y estado de churn de clientes.
+
+## Estructura del Código
+
+El código fuente se presenta en un notebook de Google Colaboratory (o Jupyter Notebook) y sigue los siguientes pasos principales:
+
+1.  **Carga de Datos y Exploración Inicial (EDA)**: Se carga el dataset y se realiza un análisis exploratorio para entender la estructura de los datos, identificar tipos de variables, valores faltantes y realizar visualizaciones básicas.
+2.  **Limpieza y Preprocesamiento de Datos**: Se limpian los valores faltantes (si existen), se corrigen tipos de datos y se preparan las variables para el modelado. Esto incluye la codificación de variables categóricas (One-Hot Encoding) y, para algunos modelos, la estandarización de variables numéricas.
+3.  **Análisis de Desbalance de Clases**: Se evalúa la proporción de clientes que cancelan versus los que no, y se identifica el desbalance de clases.
+4.  **Balanceo de Clases (SMOTE)**: Se aplica la técnica SMOTE (Synthetic Minority Over-sampling Technique) al conjunto de entrenamiento para abordar el desbalance de clases, mejorando la capacidad del modelo para predecir la clase minoritaria (Churn).
+5.  **División del Dataset**: Los datos se dividen en conjuntos de entrenamiento y prueba para evaluar el rendimiento de los modelos en datos no vistos.
+6.  **Modelado Predictivo**: Se entrenan y evalúan varios modelos de clasificación:
+    *   Regresión Logística (con datos escalados y balanceados)
+    *   Árbol de Decisión (con datos codificados, sin escalar)
+    *   Random Forest (con datos codificados, sin escalar)
+7.  **Evaluación de Modelos**: Se evalúa el rendimiento de cada modelo utilizando métricas clave como Precisión, Recall, F1-Score, Matriz de Confusión y Área bajo la Curva ROC (AUC). Se presta especial atención al rendimiento en la clase minoritaria (Churn).
+8.  **Análisis de Importancia/Influencia de Variables**: Se analizan los coeficientes de la Regresión Logística y la importancia de características de Random Forest para identificar los predictores más influyentes en la cancelación.
+9.  **Informe Detallado y Estrategias de Retención**: Se genera un informe consolidado que resume los hallazgos del análisis, el rendimiento de los modelos y se proponen estrategias de retención de clientes basadas en los factores identificados.
+
+## Requisitos
+
+*   Python 3.x
+*   Bibliotecas:
+    *   pandas
+    *   numpy
+    *   scikit-learn
+    *   matplotlib
+    *   seaborn
+    *   imblearn (para SMOTE)
+    *   requests (si se carga data de una URL)
+
+Todas las bibliotecas necesarias se instalan al inicio del notebook utilizando `!pip install`.
+
+## Cómo Ejecutar
+
+1.  Clonar este repositorio.
+2.  Abrir el archivo `.ipynb` en Google Colaboratory o Jupyter Notebook.
+3.  Ejecutar las celdas del notebook secuencialmente. Asegúrate de tener el archivo de datos `TelecomX_Churn_Data.csv` (o el nombre que se use en el código) accesible si no se descarga de una URL.
+
+## Resultados Clave y Hallazgos
+
+*   Identificación de los principales impulsores de churn: Clientes nuevos, contratos mes a mes, servicio de fibra óptica, altos cargos mensuales, pago por cheque electrónico y ausencia de servicios adicionales clave.
+*   Los modelos predictivos (especialmente Random Forest y Regresión Logística con SMOTE) muestran una capacidad razonable para predecir la evasión de clientes, con AUC y métricas de Recall/F1-Score para la clase Churn adecuadas para un problema de desbalance de clases.
+*   Las estrategias de retención propuestas se alinean directamente con los factores de riesgo identificados, sugiriendo acciones proactivas para clientes en riesgo y programas de fidelización.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un 'issue' o un 'pull request' si tienes sugerencias o mejoras.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
